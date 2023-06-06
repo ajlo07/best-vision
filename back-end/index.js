@@ -1,7 +1,5 @@
 const express = require('express')
-const userRoute = require('./src/routes/userRoute')
-const productRoute = require('./src/routes/productRoute')
-const orderRoute = require('./src/routes/orderRoute')
+const signupRoutes = require('./src/routes/signupRoutes')
 
 const bodyParser = require('body-parser')
 var app = express()
@@ -13,14 +11,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors())
-app.use('/', productRoute)
-app.use('/', userRoute)
-app.use('/', orderRoute)
+app.use('/', signupRoutes)
 
 if(process.env.ENVIRONMENT  === "lambda"){
     module.exports.handler = serverless(app)
 }else{
-app.listen(process.env.Port || 6500, function () {
-    console.log('App running on port ' + (process.env.PORT || 6500))
+app.listen(process.env.Port || 3000, function () {
+    console.log('App running on port ' + (process.env.PORT || 3000))
 })
 };
