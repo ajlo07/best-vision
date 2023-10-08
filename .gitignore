@@ -28,3 +28,4 @@ npm-debug.log
 
 # OSX hidden files
 .DS_Store
+.node_modules
