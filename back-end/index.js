@@ -1,5 +1,6 @@
 const express = require('express')
 const signupRoutes = require('./src/routes/signupRoutes')
+const newOrderRoutes = require('./src/routes/newOrderRoutes')
 
 const bodyParser = require('body-parser')
 var app = express()
@@ -12,6 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors())
 app.use('/', signupRoutes)
+app.use('/', newOrderRoutes)
 
 if(process.env.ENVIRONMENT  === "lambda"){
     module.exports.handler = serverless(app)

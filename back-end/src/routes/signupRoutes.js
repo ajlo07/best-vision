@@ -1,5 +1,6 @@
 const express = require('express');
 const {  signup_user, signIn_user } = require('../controller/signupController');
+
 const router = express.Router();
 
 router.post("/user/register", signup_user);

@@ -11,7 +11,7 @@ const signup_user = async (req, res) => {
             return res.status(400).send({ status: 0, msg: "Please fill all fields" })
         }
 
-        existingUser = await signupModel.findOne({ device_id });
+        const existingUser = await signupModel.findOne({ device_id });
 
         if (existingUser) {
           return res.status(400).send({ status: 0, msg: 'Device ID is already registered' });
@@ -42,7 +42,7 @@ const signIn_user = async (req, res) => {
       body.password = password
       if(email) { body.email = email }
       if(phone) { body.phone = phone }  
-      existingUser = await signupModel.findOne( body );
+      const existingUser = await signupModel.findOne( body );
   
       if (!existingUser) {
         return res.status(400).send({ status: 0, msg: "Invalid email/phone or password" });
